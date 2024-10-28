@@ -10,6 +10,10 @@ QML Viewer is a simple, standalone application for loading and viewing QML (Qt M
 - Simple and intuitive user interface
 - Keyboard shortcuts for quick actions
 
+
+![](./media/screenshot.png)
+
+
 ## Requirements
 
 - Python 3.6+
