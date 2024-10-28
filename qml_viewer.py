@@ -1,8 +1,22 @@
 import sys
-from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QPushButton, QVBoxLayout, QWidget, QStatusBar, QHBoxLayout, QFrame, QSizePolicy, QMenuBar, QMenu
+from PySide6.QtWidgets import (
+    QApplication,
+    QFileDialog,
+    QMainWindow,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+    QStatusBar,
+    QHBoxLayout,
+    QFrame,
+    QSizePolicy,
+    QMenuBar,
+    QMenu,
+)
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtCore import QUrl
 from PySide6.QtGui import QAction, QKeySequence
+
 
 class QmlViewer(QMainWindow):
     def __init__(self):
@@ -79,7 +93,9 @@ class QmlViewer(QMainWindow):
 
         # Create a placeholder widget for the QML view
         self.qml_placeholder = QWidget()
-        self.qml_placeholder.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.qml_placeholder.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
+        )
         self.main_layout.addWidget(self.qml_placeholder)
 
         # Set main layout spacing and margins
@@ -92,7 +108,9 @@ class QmlViewer(QMainWindow):
         self.current_qml_file = None
 
     def load_qml_file(self):
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open QML File", "", "QML Files (*.qml)")
+        file_name, _ = QFileDialog.getOpenFileName(
+            self, "Open QML File", "", "QML Files (*.qml)"
+        )
         if file_name:
             self.current_qml_file = file_name
             self.load_qml()
@@ -102,9 +120,13 @@ class QmlViewer(QMainWindow):
             self.engine.clearComponentCache()
             self.engine.load(QUrl.fromLocalFile(self.current_qml_file))
             if not self.engine.rootObjects():
-                self.statusBar().showMessage(f"Error: Failed to load {self.current_qml_file}", 5000)
+                self.statusBar().showMessage(
+                    f"Error: Failed to load {self.current_qml_file}", 5000
+                )
             else:
-                self.statusBar().showMessage(f"Successfully loaded {self.current_qml_file}", 5000)
+                self.statusBar().showMessage(
+                    f"Successfully loaded {self.current_qml_file}", 5000
+                )
                 self.reload_button.setEnabled(True)
                 self.clear_button.setEnabled(True)
                 self.reload_action.setEnabled(True)
@@ -123,11 +145,13 @@ class QmlViewer(QMainWindow):
         self.clear_action.setEnabled(False)
         self.statusBar().showMessage("QML view cleared", 5000)
 
+
 def main():
     app = QApplication(sys.argv)
     viewer = QmlViewer()
     viewer.show()
     sys.exit(app.exec())
+
 
 if __name__ == "__main__":
     main()
