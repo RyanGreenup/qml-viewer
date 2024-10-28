@@ -17,15 +17,33 @@ QML Viewer is a simple, standalone application for loading and viewing QML (Qt M
 
 ## Installation
 
-1. Clone this repository:
-   ```
-   git clone https://github.com/yourusername/qml-viewer.git
-   cd qml-viewer
+### Pipx
+
+Installation can be performed through pipx. If you don't have pipx installed, you can install it by following the instructions [here](https://pipxproject.github.io/pipx/installation/).
+
+   ```bash
+   pipx install git+https://github.com/ryangreenup/qml-viewer
    ```
 
-2. Install the required dependencies:
+### Manual
+
+1. Clone the repository:
+
+   ```bash
+   git clone git+https://github.com/ryangreenup/qml-viewer
+   cd qml-viewer
    ```
-   pip install PySide6
+2. Install the dependencies:
+
+   ```bash
+   poetry install
+   ```
+3. Create a PATH entry (e.g. `~/.local/bin/py-qml-viewer`)
+
+   ```bash
+    #!/bin/bash
+    cd /path/to/qml-viewer
+    poetry run python qml_viewer.py
    ```
 
 ## Usage
@@ -33,7 +51,8 @@ QML Viewer is a simple, standalone application for loading and viewing QML (Qt M
 Run the application:
 
 ```
-python qml_viewer.py
+# Installed
+py-qml-viewer
 ```
 
 Once the application is running:
@@ -56,4 +75,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the GPL licence.
