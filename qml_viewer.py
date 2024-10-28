@@ -2,7 +2,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QPushButton, QVBoxLayout, QWidget, QStatusBar, QHBoxLayout, QFrame, QSizePolicy, QMenuBar, QMenu
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtCore import QUrl
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QKeySequence
 
 class QmlViewer(QMainWindow):
     def __init__(self):
