@@ -89,9 +89,6 @@ class QmlViewer(QMainWindow):
         self.statusBar = QStatusBar()
         self.setStatusBar(self.statusBar)
 
-        self.load_button.setShortcut(QKeySequence.Open)
-        self.reload_button.setShortcut(QKeySequence("F5"))
-
         self.engine = QQmlApplicationEngine()
         self.current_qml_file = None
 
