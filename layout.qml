@@ -37,115 +37,126 @@ ApplicationWindow {
             }
         }
 
-        RowLayout {
+        SplitView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            spacing: 10
+            orientation: Qt.Horizontal
 
-            ColumnLayout {
-                Layout.fillHeight: true
-                Layout.preferredWidth: 200 // Width for the left sidebar
+            // First Sidebar
+            SplitView.ItemDelegate {
+                implicitWidth: 0
+                SplitView.preferredWidth: 200
+                SplitView.minimumWidth: 50
 
-                // First Sidebar: List with a Search Bar
-                TextField {
-                    placeholderText: "Search List 1"
-                    Layout.fillWidth: true
-                }
-
-                ListView {
-                    Layout.fillHeight: true
-                    model: ListModel {
-                        ListElement { name: "Item 1" }
-                        ListElement { name: "Item 2" }
-                        ListElement { name: "Item 3" }
+                ColumnLayout {
+                    anchors.fill: parent
+                    // First Sidebar content (unchanged)
+                    TextField {
+                        placeholderText: "Search List 1"
+                        Layout.fillWidth: true
                     }
-                    delegate: Text {
-                        text: model.name
-                        padding: 8
-                    }
-                }
-            }
-
-            ColumnLayout {
-                Layout.fillHeight: true
-                Layout.preferredWidth: 200 // Width for the center sidebar
-
-                // Second Sidebar: Simulated Tree Structure
-                TextField {
-                    placeholderText: "Search Tree (Simulated)"
-                    Layout.fillWidth: true
-                }
-
-                ListView {
-                    Layout.fillHeight: true
-                    model: ListModel {
-                        ListElement { name: "Root" }
-                        ListElement { name: "Child 1" }
-                        ListElement { name: "Child 2" }
-                        ListElement { name: "Child 3" }
-                    }
-                    delegate: Column {
-                        Text {
+                    ListView {
+                        Layout.fillHeight: true
+                        model: ListModel {
+                            ListElement { name: "Item 1" }
+                            ListElement { name: "Item 2" }
+                            ListElement { name: "Item 3" }
+                        }
+                        delegate: Text {
                             text: model.name
                             padding: 8
                         }
+                    }
+                }
+            }
 
-                        // Simulate sub-items indentation
-                        ListView {
-                            visible: index === 3 // Display sub-items only for "Child 3"
-                            model: ListModel {
-                                ListElement { name: "Subchild 3.1" }
-                                ListElement { name: "Subchild 3.2" }
-                            }
-                            delegate: Text {
-                                text: "    " + model.name // Indent sub-items
+            // Second Sidebar
+            SplitView.ItemDelegate {
+                implicitWidth: 0
+                SplitView.preferredWidth: 200
+                SplitView.minimumWidth: 50
+
+                ColumnLayout {
+                    anchors.fill: parent
+                    // Second Sidebar content (unchanged)
+                    TextField {
+                        placeholderText: "Search Tree (Simulated)"
+                        Layout.fillWidth: true
+                    }
+                    ListView {
+                        Layout.fillHeight: true
+                        model: ListModel {
+                            ListElement { name: "Root" }
+                            ListElement { name: "Child 1" }
+                            ListElement { name: "Child 2" }
+                            ListElement { name: "Child 3" }
+                        }
+                        delegate: Column {
+                            Text {
+                                text: model.name
                                 padding: 8
+                            }
+                            ListView {
+                                visible: index === 3
+                                model: ListModel {
+                                    ListElement { name: "Subchild 3.1" }
+                                    ListElement { name: "Subchild 3.2" }
+                                }
+                                delegate: Text {
+                                    text: "    " + model.name
+                                    padding: 8
+                                }
                             }
                         }
                     }
                 }
             }
 
-            ColumnLayout {
-                Layout.fillHeight: true
-                Layout.preferredWidth: 200 // Width for the right sidebar
+            // Third Sidebar
+            SplitView.ItemDelegate {
+                implicitWidth: 0
+                SplitView.preferredWidth: 200
+                SplitView.minimumWidth: 50
 
-                // Third Sidebar: Another List with a Search Bar
-                TextField {
-                    placeholderText: "Search List 2"
-                    Layout.fillWidth: true
-                }
-
-                ListView {
-                    Layout.fillHeight: true
-                    model: ListModel {
-                        ListElement { name: "Item A" }
-                        ListElement { name: "Item B" }
-                        ListElement { name: "Item C" }
+                ColumnLayout {
+                    anchors.fill: parent
+                    // Third Sidebar content (unchanged)
+                    TextField {
+                        placeholderText: "Search List 2"
+                        Layout.fillWidth: true
                     }
-                    delegate: Text {
-                        text: model.name
-                        padding: 8
+                    ListView {
+                        Layout.fillHeight: true
+                        model: ListModel {
+                            ListElement { name: "Item A" }
+                            ListElement { name: "Item B" }
+                            ListElement { name: "Item C" }
+                        }
+                        delegate: Text {
+                            text: model.name
+                            padding: 8
+                        }
                     }
                 }
             }
 
+            // Right Side Text Fields (unchanged)
             ColumnLayout {
                 Layout.fillHeight: true
-                Layout.preferredWidth: 200 // Width for the right side fields
+                Layout.fillWidth: true
+                Layout.minimumWidth: 200
 
-                // Right Side Text Fields
                 TextField {
                     placeholderText: "Small Text Field"
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 40 // Smaller height for the top field
+                    Layout.preferredHeight: 40
                 }
 
                 TextArea {
                     placeholderText: "Large Text Area"
                     Layout.fillWidth: true
-                    Layout.fillHeight: true // Takes remaining space
-                    Layout.minimumHeight: 80 // Minimum height for usability
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: 80
                 }
             }
         }
