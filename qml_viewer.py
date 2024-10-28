@@ -49,7 +49,7 @@ class QmlViewer(QMainWindow):
 
         # Create a frame for the buttons
         self.button_frame = QFrame()
-        self.button_frame.setFrameStyle(QFrame.Panel | QFrame.Raised)
+        self.button_frame.setFrameStyle(QFrame.Shape.Panel | QFrame.Shadow.Raised)
         self.button_layout = QHBoxLayout(self.button_frame)
 
         self.load_button = QPushButton("Load QML File")
@@ -79,7 +79,7 @@ class QmlViewer(QMainWindow):
 
         # Create a placeholder widget for the QML view
         self.qml_placeholder = QWidget()
-        self.qml_placeholder.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.qml_placeholder.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.main_layout.addWidget(self.qml_placeholder)
 
         # Set main layout spacing and margins
