@@ -43,7 +43,7 @@ ApplicationWindow {
             orientation: Qt.Horizontal
 
             // First Sidebar
-            SplitView.ItemDelegate {
+            Item {
                 implicitWidth: 0
                 SplitView.preferredWidth: 200
                 SplitView.minimumWidth: 50
@@ -71,7 +71,7 @@ ApplicationWindow {
             }
 
             // Second Sidebar
-            SplitView.ItemDelegate {
+            Item {
                 implicitWidth: 0
                 SplitView.preferredWidth: 200
                 SplitView.minimumWidth: 50
@@ -113,7 +113,7 @@ ApplicationWindow {
             }
 
             // Third Sidebar
-            SplitView.ItemDelegate {
+            Item {
                 implicitWidth: 0
                 SplitView.preferredWidth: 200
                 SplitView.minimumWidth: 50
