@@ -12,6 +12,7 @@ QML Viewer is a simple, standalone application for loading and viewing QML (Qt M
 
 
 ![](./media/screenshot.png)
+![](./media/screenshot-with-layout.png)
 
 
 ## Requirements
